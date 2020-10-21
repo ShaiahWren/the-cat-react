@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { eat, play, nap, setName } from '../redux/actions';
 
-const Activity = ({activity, eat, play, nap, name, setName}) => (
+const Activity = ({activity, eat, play, nap, name, setName}) => {
+    const [input, setInput] = useState('');
+
+    return (
     <>
         <h1>What is the cat doing now??</h1>
         <p>{name} is { activity} </p>
@@ -18,12 +21,13 @@ const Activity = ({activity, eat, play, nap, name, setName}) => (
             Playing
         </button>
     </>
-)
-
-const mapStateToProps = (state) => {
-    const { activity, name } = state;
-    return [{activity, name}];
+    )
 }
+
+const mapStateToProps = state => {
+    const {name, activity } = state;
+    return { name: name.name, activity: activity.activity };
+};
 
 
 export default connect(mapStateToProps, {eat, play, nap, setName})(Activity);
