@@ -1,6 +1,7 @@
 import { ACTION_NAP, ACTION_EAT, ACTION_PLAY } from "../actionTypes";
 const initialState = {
     activity: "napping",
+   
 };
 const activityReducer = (state = initialState, action) => {
     switch (action.type) {
